@@ -1,0 +1,20 @@
+WebApps Content Management System
+=================================
+Developed by: Ian Llewellyn
+
+I wrote the WebApps CMS somewhere around 2010 for the Trim Canoe Club in Meath,
+Ireland. Thinking that I might do more sites, I designed it in a way that would
+make it easy for me to reuse the code elsewhere. I never did.
+
+I'm making it available now because the CMS is now offline on that site, and my
+ego has requested that I keep a copy of it somewhere safe..
+
+If you decide to reuse the code, you'll need to:
+* setup a database using the wacms.sql script
+* enter the database details into logic/db_mysql.php
+* set an admin password in app_start.php
+* probably fix a few random minor issues
+
+If you use it, let me know.
+
+Ian
