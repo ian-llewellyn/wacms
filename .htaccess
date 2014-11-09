@@ -1,0 +1,47 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+## I think this note, found on http://127.0.0.1/manual/mod/mod_rewrite.html
+## explains why there's no need for a '/' at the beginning of the expressions
+## below.
+# When using the rewrite engine in .htaccess files the per-directory prefix
+# (which always is the same for a specific directory) is automatically removed
+# for the pattern matching and automatically added after the substitution has
+# been done. This feature is essential for many sorts of rewriting; without
+# this, you would always have to match the parent directory, which is not
+# always possible. There is one exception: If a substitution string starts with
+# http://, then the directory prefix will not be added, and an external
+# redirect (or proxy throughput, if using flag P) is forced. See the
+# RewriteBase directive for more information.
+
+# NEVER REWRITE
+  RewriteRule ^forum(/.*)?$ - [L]
+
+  RewriteRule ^.*\.css$ - [L]
+  RewriteRule ^.*\.gif$ - [L]
+  RewriteRule ^.*\.jpe?g$ - [L]
+  RewriteRule ^.*\.png$ - [L]
+  RewriteRule ^.*\.doc$ - [L]
+  RewriteRule ^.*`.pdf$ - [L]
+  RewriteRule ^ckeditor/.*$ - [L]
+
+# ALREADY REWRITTEN
+  RewriteRule ^logic/index.php.*?$ - [L]
+  RewriteRule ^logic/news.php.*?$ - [L]
+  RewriteRule ^logic/events.php.*?$ - [L]
+  RewriteRule ^logic/gallery.php.*?$ - [L]
+  RewriteRule ^logic/upload.php.*?$ - [L]
+
+# REWRITE
+  RewriteRule ^/?$ logic/index.php [L]
+  RewriteRule ^news(/.*)?$ logic/news.php [L]
+  RewriteRule ^events(/.*)?$ logic/events.php [L]
+  RewriteRule ^gallery(/.*)?$ logic/gallery.php [L]
+  RewriteRule ^upload/?$ logic/upload.php [L]
+
+# WEBMAIL
+  RewriteRule ^webmail/?$ https://cp.blacknight.com/webmail/651/ [L]
+
+# DEFAULT
+  RewriteRule ^.*?$ logic/pages.php
+</IfModule>
